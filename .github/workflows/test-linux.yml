@@ -1,0 +1,71 @@
+on:
+  pull_request:
+
+name: Run Tests
+
+jobs:
+  build:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type: [linux-node16, linux-node18, alpine-node16, alpine-node18]
+        include:
+          - type: linux-node16
+            image: node:16
+            node-version: 16.x
+            os: linux
+            run: |
+              apt-get update
+              apt-get install -y make gcc git
+              wget -O /cmake-Linux-x86_64.sh https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-x86_64.sh
+              mkdir /opt/cmake
+              sh /cmake-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+              ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+
+          - type: linux-node18
+            image: node:18
+            node-version: 18.x
+            os: linux
+            run: |
+              apt-get update
+              apt-get install -y make gcc git
+              wget -O /cmake-Linux-x86_64.sh https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-x86_64.sh
+              mkdir /opt/cmake
+              sh /cmake-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+              ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+
+          - type: alpine-node16
+            image: node:16-alpine
+            node-version: 16.x
+            os: alpine
+            run: |
+              apk update
+              apk add cmake make g++ git
+
+          - type: alpine-node18
+            image: node:18-alpine
+            node-version: 18.x
+            os: alpine
+            run: |
+              apk update
+              apk add cmake make g++ git
+
+    container:
+      image: ${{ matrix.image }}
+    steps:
+      - name: Build project
+        run: ${{ matrix.run }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Install
+        run: |
+          npm install --ignore-scripts
+          ./installSource.sh
+
+      - name: Run tests
+        run: ./node_modules/.bin/ava -s

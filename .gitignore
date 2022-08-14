@@ -1,0 +1,6 @@
+*.db
+*.db-wal
+node_modules
+src/*.node
+ejdb
+build

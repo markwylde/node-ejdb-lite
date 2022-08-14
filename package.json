@@ -1,0 +1,57 @@
+{
+  "name": "node-ejdb-lite",
+  "version": "2.73.0",
+  "repository": "https://github.com/markwylde/node-ejdb-lite.git",
+  "author": "Anton Adamansky <adamansky@gmail.com>",
+  "description": "Blazing fast (installs in seconds) and lightweight EJDB2 bindings for NodeJS",
+  "license": "MIT",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "alpine",
+    "!win32"
+  ],
+  "cpu": [
+    "x64",
+    "x32",
+    "arm",
+    "arm64"
+  ],
+  "scripts": {
+    "test": "ava -s",
+    "install": "npm run install:remote",
+    "install:remote": "./installRemote.sh",
+    "install:source": "./installSource.sh"
+  },
+  "dependencies": {
+    "semver": "^7.3.7"
+  },
+  "devDependencies": {
+    "ava": "^4.3.1",
+    "chai": "^4.3.6"
+  },
+  "keywords": [
+    "ejdb",
+    "ejdb2",
+    "nosql",
+    "json",
+    "database",
+    "storage",
+    "embedded",
+    "embeddable",
+    "native",
+    "binding"
+  ],
+  "ava": {
+    "files": [
+      "src/test.js"
+    ],
+    "failWithoutAssertions": false
+  }
+}

@@ -1,0 +1,68 @@
+on:
+  release:
+    types: [created]
+
+name: Upload Release Asset
+
+jobs:
+  build:
+    name: Upload Release Asset
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type: [linux-node16, alpine-node16]
+        include:
+          - type: linux-node16
+            image: node:16
+            node-version: 16.x
+            os: linux
+            run: |
+              apt-get update
+              apt-get install -y make gcc git
+              wget -O /cmake-Linux-x86_64.sh https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-x86_64.sh
+              mkdir /opt/cmake
+              sh /cmake-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+              ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+
+          - type: alpine-node16
+            image: node:16-alpine
+            node-version: 16.x
+            os: alpine
+            run: |
+              apk update
+              apk add cmake make g++ git
+    container:
+      image: ${{ matrix.image }}
+    steps:
+      - name: Build project
+        run: ${{ matrix.run }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Install
+        run: |
+          npm install --ignore-scripts
+          ./installSource.sh
+
+      - name: Run tests
+        run: ./node_modules/.bin/ava -s
+
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.2.2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: ./src/ejdb2_node.node
+          asset_name: ejdb2_node_x64_${{ matrix.os }}_${{ matrix.node-version }}.node
+          asset_content_type: application/octet-stream
