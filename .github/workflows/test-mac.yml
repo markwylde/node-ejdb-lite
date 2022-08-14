@@ -1,0 +1,30 @@
+on:
+  pull_request:
+
+name: Run Tests (macOS)
+
+jobs:
+  build:
+    name: Run Tests
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Delete npm prefix
+        run: npm config delete prefix
+
+      - name: Install dependencies
+        shell: bash --login {0}
+        run: nvm install 16 && nvm use 16
+
+      - name: Build project
+        shell: bash --login {0}
+        run: |
+          npm install --ignore-scripts
+          ./installSource.sh
+
+      - name: Run tests
+        run: ./node_modules/.bin/ava -s
