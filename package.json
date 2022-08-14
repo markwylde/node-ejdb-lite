@@ -30,7 +30,6 @@
     "install:source": "./installSource.sh"
   },
   "dependencies": {
-    "semver": "^7.3.7"
   },
   "devDependencies": {
     "ava": "^4.3.1",
