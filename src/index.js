@@ -24,10 +24,12 @@
  * SOFTWARE.
  *************************************************************************************************/
 
-const semver = require('semver');
 const {engines} = require('../package');
 
-if (!semver.satisfies(process.version, engines.node)) {
+const minimumMajor = parseInt(engines.node.slice(2).split('.')[0]);
+const actualMajor = parseInt(process.version.slice(1).split('.')[0]);
+
+if (actualMajor <= minimumMajor) {
   console.log(`Required node version ${engines.node} not satisfied with current version ${process.version}.`);
   process.exit(1);
 }
