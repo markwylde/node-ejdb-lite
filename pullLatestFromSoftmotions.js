@@ -3,6 +3,8 @@
 const util = require('util');
 const fs = require('fs');
 const exec = util.promisify(require('node:child_process').exec);
+const semver = require('semver');
+const packageJson = require('./package.json');
 
 async function main () {
   const { stdout, stderr } = await exec(
@@ -27,6 +29,8 @@ async function main () {
   ].join('\n');
   
   await fs.promises.writeFile('./installSource.sh', newInstallSourceData);
+
+  await exec('npm vers patch --no-git-tag-version');
 }
 
 main();
