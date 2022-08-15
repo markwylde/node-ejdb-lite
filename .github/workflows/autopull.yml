@@ -18,7 +18,8 @@ jobs:
         shell: bash
         run: |
           npm install
-          echo "PULL_OUTPUT=`./pullLatestFromSoftmotions.js` >> $GITHUB_ENV
+          PULL_OUTPUT=`./pullLatestFromSoftmotions.js`
+          echo "PULL_OUTPUT<<EOF" >> $GITHUB_ENV
 
       - name: Create Pull Request
         id: cpr
