@@ -19,7 +19,9 @@ jobs:
         run: |
           npm install
           echo 'PULL_OUTPUT<<XXXXX_EOF_XXXXX' >> $GITHUB_ENV
+          echo '```' >> $GITHUB_ENV
           ./pullLatestFromSoftmotions.js >> $GITHUB_ENV
+          echo '```' >> $GITHUB_ENV
           echo 'XXXXX_EOF_XXXXX' >> $GITHUB_ENV
 
       - name: Create Pull Request
