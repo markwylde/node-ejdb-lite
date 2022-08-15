@@ -15,9 +15,10 @@ jobs:
 
       - name: Make changes to pull request
         id: pull-latest
+        shell: bash
         run: |
           npm install
-          ./pullLatestFromSoftmotions.js > $PULL_OUTPUT
+          echo "PULL_OUTPUT=`./pullLatestFromSoftmotions.js` >> $GITHUB_ENV
 
       - name: Create Pull Request
         id: cpr
@@ -32,7 +33,7 @@ jobs:
           title: 'SoftMotions - Pull in latest changes'
           body: |
             Pull in the latest changes from softmotions
-            ${{ steps.pull-latest.outputs.PULL_OUTPUT }}
+            ${{ env.PULL_OUTPUT }}
           labels: |
             report
             automated pr
