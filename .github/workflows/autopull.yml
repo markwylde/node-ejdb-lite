@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron:  '0 * * * *'
 
 name: Automatically Pull from SoftMotions
 
@@ -29,7 +29,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: master
+          branch: autopull
           delete-branch: true
           title: 'SoftMotions - Pull in latest changes'
           body: |
