@@ -66,3 +66,7 @@ jobs:
           asset_path: ./src/ejdb2_node.node
           asset_name: ejdb2_node_x64_${{ matrix.os }}_${{ matrix.node-version }}.node
           asset_content_type: application/octet-stream
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
