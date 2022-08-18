@@ -35,7 +35,7 @@ if (actualMajor <= minimumMajor) {
 }
 
 global.__ejdb_add_stream_result__ = addStreamResult; // Passing it to ejdb2_node init
-const {EJDB2Impl} = require('./binary')('ejdb2_node');
+const {EJDB2Impl} = require('./ejdb2_node');
 const {Readable} = require('stream');
 delete global.__ejdb_add_stream_result__;
 
