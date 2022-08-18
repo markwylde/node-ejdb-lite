@@ -20,6 +20,8 @@ jobs:
           ./pullLatestFromSoftmotions.js >> $GITHUB_ENV
           echo '```' >> $GITHUB_ENV
           echo 'XXXXX_EOF_XXXXX' >> $GITHUB_ENV
+          LATEST_VERSION=`node -e "console.log(require('./package.json').version)"`
+          echo "LATEST_VERSION=v$LATEST_VERSION" >> $GITHUB_ENV
 
       - name: Create Pull Request
         id: cpr
@@ -31,7 +33,7 @@ jobs:
           signoff: false
           branch: autopull
           delete-branch: true
-          title: 'SoftMotions - Pull in latest changes'
+          title: '${{ env.LATEST_VERSION }} - SoftMotions - Pull in latest changes'
           body: |
             Pull in the latest changes from softmotions
             ${{ env.PULL_OUTPUT }}
