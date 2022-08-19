@@ -122,3 +122,14 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Rename for Github Registry
+        run: |
+          npm pkg set name="@markwylde/node-ejdb-lite"
+          npm install --ignore-scripts
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://npm.pkg.github.com
+          access: public
+          token: ${{ secrets.GITHUB_TOKEN }}
