@@ -53,6 +53,7 @@ async function main () {
   }
 
   await exec('npm vers patch --no-git-tag-version');
+  await exec('npm install --ignore-scripts');
 }
 
 main();
