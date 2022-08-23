@@ -152,7 +152,7 @@ jobs:
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
           asset_path: ./src/ejdb2_node.node
-          asset_name: ejdb2_node_aarch64_${{ matrix.os }}_${{ matrix.node-version }}.node
+          asset_name: ejdb2_node_aarch64_linux_16.x.node
           asset_content_type: application/octet-stream
 
   deploy-npmjs:
