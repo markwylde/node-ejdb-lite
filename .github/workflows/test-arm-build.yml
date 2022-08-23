@@ -5,9 +5,8 @@ name: Test ARM Build
 
 jobs:
   deploy-arm-test:
-    name: Deploy on npmjs.org
+    name: Deploy ARM Test
     runs-on: ubuntu-latest
-    needs: [build-linux, build-mac]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
