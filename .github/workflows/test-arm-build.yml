@@ -26,6 +26,7 @@ jobs:
             mkdir /opt/cmake
             sh /cmake-Linux-aarch64.sh --prefix=/opt/cmake --skip-license
             ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+            npm i -g yarn
             npm install --ignore-scripts
             ./installSource.sh
             npm run test
