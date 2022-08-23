@@ -15,6 +15,7 @@ jobs:
         id: build_image
         with:
           base_image: dietpi:rpi_armv8_bullseye
+          image_additional_mb: 10240
           commands: |
             curl -sSL https://deb.nodesource.com/setup_16.x | bash -
             apt-get update
