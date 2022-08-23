@@ -15,6 +15,8 @@ jobs:
         id: build_image
         with:
           base_image: dietpi:rpi_armv8_bullseye
+          copy_artifact_path: ./src/ejdb2_node.node
+          copy_artifact_dest: ./src/ejdb2_node.node
           image_additional_mb: 10240
           commands: |
             curl -sSL https://deb.nodesource.com/setup_16.x | bash -
@@ -30,3 +32,8 @@ jobs:
             npm install --ignore-scripts
             ./installSource.sh
             npm run test
+            echo "chipset is `uname -m`"
+            
+      - name: List src
+        run: ls ./src
+
