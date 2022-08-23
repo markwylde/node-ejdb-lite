@@ -23,6 +23,7 @@ jobs:
             sh /cmake-Linux-aarch64.sh --prefix=/opt/cmake --skip-license
             ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
+            mkdir -p $NVM_DIR
             wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
             export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
