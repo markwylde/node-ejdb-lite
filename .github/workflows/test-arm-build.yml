@@ -19,7 +19,7 @@ jobs:
           commands: |
             curl -sSL https://deb.nodesource.com/setup_16.x | bash -
             apt-get update
-            apt-get install -y make gcc git nodejs
+            apt-get install -y make clang git nodejs
             node --version
             npm --version
             wget -O /cmake-Linux-aarch64.sh https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-aarch64.sh
