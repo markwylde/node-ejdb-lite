@@ -26,8 +26,7 @@ jobs:
             mkdir -p $NVM_DIR
             wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            echo "GOT TO HERE"
-            nvm install 16
+            NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release nvm install 16
             npm install --ignore-scripts
             ./installSource.sh
             npm run test
