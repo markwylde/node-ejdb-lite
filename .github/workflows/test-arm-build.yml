@@ -23,10 +23,10 @@ jobs:
             sh /cmake-Linux-aarch64.sh --prefix=/opt/cmake --skip-license
             ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
-            mkdir -p $NVM_DIR
-            wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release nvm install 16
+            curl -sSL https://deb.nodesource.com/setup_16.x | bash -
+            apt install -y nodejs
+            node --version
+            npm --version
             npm install --ignore-scripts
             ./installSource.sh
             npm run test
