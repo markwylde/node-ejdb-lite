@@ -25,7 +25,7 @@ import { EJDB2 } from 'node-ejdb-lite';
 async function run() {
   const db = await EJDB2.open('example.db', { truncate: true });
 
-  var id = await db.put('parrots', { name: 'Bianca', age: 4 });
+  let id = await db.put('parrots', { name: 'Bianca', age: 4 });
   console.log(`Bianca record: ${id}`);
 
   id = await db.put('parrots', { name: 'Darko', age: 8 });
@@ -45,5 +45,6 @@ run();
 
 ## Supported platforms
 - Linux x64
+- Linux aarch64
 - Alpine Linux
 - OSX
