@@ -10,6 +10,7 @@ jobs:
     needs: [build-linux, build-mac]
     steps:
       - name: Checkout code
+        uses: actions/checkout@v2
 
       - uses: pguyot/arm-runner-action@v2
         id: build_image
