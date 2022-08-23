@@ -14,19 +14,17 @@ jobs:
       - uses: pguyot/arm-runner-action@v2
         id: build_image
         with:
-          base_image: raspios_lite:2022-01-28
+          base_image: dietpi:rpi_armv8_bullseye
           commands: |
+            curl -sSL https://deb.nodesource.com/setup_16.x | bash -
             apt-get update
-            apt-get install -y make gcc git
+            apt-get install -y make gcc git nodejs
+            node --version
+            npm --version
             wget -O /cmake-Linux-aarch64.sh https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-aarch64.sh
             mkdir /opt/cmake
             sh /cmake-Linux-aarch64.sh --prefix=/opt/cmake --skip-license
             ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
-
-            curl -sSL https://deb.nodesource.com/setup_16.x | bash -
-            apt install -y nodejs
-            node --version
-            npm --version
             npm install --ignore-scripts
             ./installSource.sh
             npm run test
