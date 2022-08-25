@@ -271,7 +271,7 @@ test('rename collection', async t => {
   await db.close();
 });
 
-test('stress test- series', async t => {
+test('stress test - series', async t => {
   t.plan(1);
 
   const db = await EJDB2.open('stress.db', { truncate: true });
@@ -285,7 +285,7 @@ test('stress test- series', async t => {
   }
 
   const timeTaken = Date.now() - startTime;
-  t.ok(timeTaken < 10000, `should take less than 10000ms (took ${timeTaken}ms)`);
+  t.ok(timeTaken < 15000, `should take less than 15000ms (took ${timeTaken}ms)`);
 
   await db.close();
 });
