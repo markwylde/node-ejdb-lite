@@ -68,4 +68,4 @@ jobs:
           ./installSource.sh
 
       - name: Run tests
-        run: ./node_modules/.bin/ava -s
+        run: node test
