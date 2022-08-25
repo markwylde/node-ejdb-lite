@@ -277,7 +277,7 @@ test('stress test - series', async t => {
   const db = await EJDB2.open('stress.db', { truncate: true });
 
   const startTime = Date.now();
-  for (let x = 0; x < 100000; x++) {
+  for (let x = 0; x < 10000; x++) {
     const originalDocument = { foo: x };
     const id = await db.put('cc1', originalDocument);
     const returnedDocument = await db.get('cc1', id);
