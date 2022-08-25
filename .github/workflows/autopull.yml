@@ -20,8 +20,10 @@ jobs:
           ./pullLatestFromSoftmotions.js >> $GITHUB_ENV
           echo '```' >> $GITHUB_ENV
           echo 'XXXXX_EOF_XXXXX' >> $GITHUB_ENV
-          LATEST_VERSION=`node -e "console.log(require('./package.json').version)"`
+          git show master:package.json > package-master.json
+          LATEST_VERSION=`node -e "console.log(require('./package-master.json').version)"`
           FORMATTED_DATE=`node -e "console.log((new Date()).toISOString().split('T')[0])"`
+          rm package-master.json
           echo "LATEST_VERSION=v$LATEST_VERSION" >> $GITHUB_ENV
           echo "FORMATTED_DATE=$FORMATTED_DATE" >> $GITHUB_ENV
 
