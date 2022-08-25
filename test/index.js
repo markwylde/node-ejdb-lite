@@ -285,7 +285,7 @@ test('stress test - series', async t => {
   }
 
   const timeTaken = Date.now() - startTime;
-  t.ok(timeTaken < 15000, `should take less than 15000ms (took ${timeTaken}ms)`);
+  t.ok(timeTaken < 5000, `should take less than 5000ms (took ${timeTaken}ms)`);
 
   await db.close();
 });
@@ -297,7 +297,7 @@ test('stress test - parallel', async t => {
 
   const startTime = Date.now();
   const promises = [];
-  for (let x = 0; x < 100000; x++) {
+  for (let x = 0; x < 10000; x++) {
     const originalDocument = { foo: x };
     promises.push(
       db.put('cc1', originalDocument)
@@ -311,7 +311,7 @@ test('stress test - parallel', async t => {
   await Promise.all(promises);
 
   const timeTaken = Date.now() - startTime;
-  t.ok(timeTaken < 5000, `should take less than 10000ms (took ${timeTaken}ms)`);
+  t.ok(timeTaken < 5000, `should take less than 5000ms (took ${timeTaken}ms)`);
 
   await db.close();
 });
