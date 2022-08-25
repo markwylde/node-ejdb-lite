@@ -24,7 +24,7 @@ jobs:
               ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
           - type: linux-node18
-            image: node:18.6
+            image: node:18
             node-version: 18.x
             os: linux
             run: |
@@ -44,7 +44,7 @@ jobs:
               apk add cmake make g++ git
 
           - type: alpine-node18
-            image: node:18.6-alpine
+            image: node:18-alpine
             node-version: 18.x
             os: alpine
             run: |

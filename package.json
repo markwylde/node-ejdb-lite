@@ -30,7 +30,7 @@
     "install:source": "./installSource.sh"
   },
   "devDependencies": {
-    "ava": "^4.3.1",
+    "ava": "^4.3.3",
     "chai": "^4.3.6"
   },
   "keywords": [
