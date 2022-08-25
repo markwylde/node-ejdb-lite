@@ -24,14 +24,14 @@
     "arm64"
   ],
   "scripts": {
-    "test": "ava -s",
+    "test": "c8 node test",
     "install": "npm run install:remote",
     "install:remote": "./installRemote.sh",
     "install:source": "./installSource.sh"
   },
   "devDependencies": {
-    "ava": "^4.3.3",
-    "chai": "^4.3.6"
+    "basictap": "^3.4.3",
+    "c8": "^7.12.0"
   },
   "keywords": [
     "ejdb",
@@ -44,11 +44,5 @@
     "embeddable",
     "native",
     "binding"
-  ],
-  "ava": {
-    "files": [
-      "src/test.js"
-    ],
-    "failWithoutAssertions": false
-  }
+  ]
 }
