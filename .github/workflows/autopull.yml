@@ -27,8 +27,9 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@33434f1c620903527d2189c987163c4218087a7a
         with:
+          token: ${{ secrets.AUTOPULL_TOKEN }}
           commit-message: '${{ env.LATEST_VERSION }} - ${{ env.FORMATTED_DATE }} - Pull in latest changes from SoftMotions'
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
