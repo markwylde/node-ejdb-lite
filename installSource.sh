@@ -1,9 +1,8 @@
-LATEST_SOFTMOTIONS_HEAD=db7f44cbc69ec27d4d34d7dd8670e7e0870b3b3b
+SOFTMOTIONS_BRANCH=db7f44cbc69ec27d4d34d7dd8670e7e0870b3b3b
 rm -rf ejdb
 git clone --depth=1 --recursive https://github.com/Softmotions/ejdb.git
 cd ejdb
-git fetch $LATEST_SOFTMOTIONS_HEAD
-git checkout $LATEST_SOFTMOTIONS_HEAD
+git checkout $SOFTMOTIONS_BRANCH
 mkdir ./build
 cd build
 cmake .. -DBUILD_NODEJS_BINDING=ON -DCMAKE_BUILD_TYPE=Release

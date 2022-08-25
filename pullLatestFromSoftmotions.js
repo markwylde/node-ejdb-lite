@@ -22,7 +22,7 @@ async function main () {
 
   const installSourceData = await fs.promises.readFile('./installSource.sh', 'utf8');
   const newInstallSourceData = [
-    'LATEST_SOFTMOTIONS_HEAD=' + latestSoftmotionsHead,
+    'SOFTMOTIONS_BRANCH=' + latestSoftmotionsHead,
     ...installSourceData.split('\n').slice(1)
   ].join('\n');
   
