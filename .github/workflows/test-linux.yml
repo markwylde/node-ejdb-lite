@@ -24,7 +24,7 @@ jobs:
               ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
           - type: linux-node18
-            image: node:18
+            image: node:18.6
             node-version: 18.x
             os: linux
             run: |
