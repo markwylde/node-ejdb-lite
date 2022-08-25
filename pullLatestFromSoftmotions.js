@@ -52,6 +52,9 @@ async function main () {
     console.log(stdout.split('\n').slice(0, -1).map(i => `   - ${i}`).join('\n'));
   }
 
+  const { stdout: masterPackageJson } = await exec('git show master:package.json');
+  const masterPackage = JSON.parse(masterPackageJson);
+  await exec(`npm vers ${masterPackage.version}`);
   await exec('npm vers patch --no-git-tag-version');
   await exec('npm install --ignore-scripts');
 }
