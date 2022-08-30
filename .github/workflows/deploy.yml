@@ -28,7 +28,7 @@ jobs:
           ./installSource.sh
 
       - name: Run tests
-        run: ./node_modules/.bin/ava -s
+        run: node test
 
       - name: Get release
         id: get_release
@@ -90,7 +90,7 @@ jobs:
           ./installSource.sh
 
       - name: Run tests
-        run: ./node_modules/.bin/ava -s
+        run: node test
 
       - name: Get release
         id: get_release
