@@ -61,7 +61,7 @@ jobs:
             run: |
               apt-get update
               apt-get install -y make gcc git
-              wget -O /cmake-Linux-x86_64.sh https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-x86_64.sh
+              wget -O /cmake-Linux-x86_64.sh https://github.com/Kitware/CMake/releases/download/v3.25.2/cmake-3.25.2-linux-x86_64.sh
               mkdir /opt/cmake
               sh /cmake-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
               ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
@@ -129,7 +129,7 @@ jobs:
             apt-get install -y make clang git nodejs
             node --version
             npm --version
-            wget -O /cmake-Linux-aarch64.sh https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-aarch64.sh
+            wget -O /cmake-Linux-aarch64.sh https://github.com/Kitware/CMake/releases/download/v3.25.2/cmake-3.25.2-linux-aarch64.sh
             mkdir /opt/cmake
             sh /cmake-Linux-aarch64.sh --prefix=/opt/cmake --skip-license
             ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
