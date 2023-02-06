@@ -1,4 +1,4 @@
-SOFTMOTIONS_BRANCH=bb1c9d0d8be49fc632be0ef8d5d0bffad42a7607
+SOFTMOTIONS_BRANCH=bd667665400d9e3e57c4b7013ce6e6c0c4556ee3
 rm -rf ejdb
 git clone --depth=1 --recursive https://github.com/Softmotions/ejdb.git
 cd ejdb
