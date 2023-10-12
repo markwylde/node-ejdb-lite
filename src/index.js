@@ -27,8 +27,11 @@
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { EJDB2Impl } from './ejdb2_node';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 import { Readable } from 'stream';
+
+const { EJDB2Impl } = require('./ejdb2_node');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
