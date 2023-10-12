@@ -26,7 +26,7 @@
 
 import assert from 'assert';
 import test from 'basictap';
-import { EJDB2, JBE } from '../src/index.js';
+import { EJDB2, JBE } from '../src/index.cjs';
 
 test('createQuery', async t => {
   const db = await EJDB2.open('hello.db', { truncate: true });

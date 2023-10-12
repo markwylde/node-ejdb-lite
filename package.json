@@ -6,7 +6,7 @@
   "author": "Anton Adamansky <adamansky@gmail.com>",
   "description": "Blazing fast (installs in seconds) and lightweight EJDB2 bindings for NodeJS",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "src/index.cjs",
   "types": "src/index.d.ts",
   "engines": {
     "node": ">=10.0.0",

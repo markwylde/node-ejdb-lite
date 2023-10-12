@@ -24,20 +24,7 @@
  * SOFTWARE.
  *************************************************************************************************/
 
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-import { Readable } from 'stream';
-
-const { EJDB2Impl } = require('./ejdb2_node');
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const jsonData = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url)));
-const { engines } = jsonData;
+const {engines} = require('../package');
 
 const minimumMajor = parseInt(engines.node.slice(2).split('.')[0]);
 const actualMajor = parseInt(process.version.slice(1).split('.')[0]);
@@ -48,7 +35,8 @@ if (actualMajor <= minimumMajor) {
 }
 
 global.__ejdb_add_stream_result__ = addStreamResult; // Passing it to ejdb2_node init
-
+const {EJDB2Impl} = require('./ejdb2_node');
+const {Readable} = require('stream');
 delete global.__ejdb_add_stream_result__;
 
 function escapeUnicode(text) {
@@ -70,7 +58,7 @@ function jsonParseAndEscapeIfNeeded(object) {
 /**
  * EJDB2 Error helpers.
  */
-export class JBE {
+class JBE {
 
   /**
    * Returns `true` if given error [err] is `IWKV_ERROR_NOTFOUND`
@@ -96,7 +84,7 @@ export class JBE {
 /**
  * EJDB document.
  */
-export class JBDOC {
+class JBDOC {
 
   /**
    * Get document JSON object
@@ -130,7 +118,7 @@ export class JBDOC {
 /**
  * EJDB Query resultset stream.
  */
-export class JBDOCStream extends Readable {
+class JBDOCStream extends Readable {
 
   get _impl() {
     return this.jql._impl;
@@ -218,7 +206,7 @@ export class JBDOCStream extends Readable {
 }
 
 // Global module function for add results to query stream
-export function addStreamResult(stream, id, jsondoc, log) {
+function addStreamResult(stream, id, jsondoc, log) {
   if (stream._destroyed) {
     return;
   }
@@ -261,7 +249,7 @@ export function addStreamResult(stream, id, jsondoc, log) {
 /**
  * EJDB Query.
  */
-export class JQL {
+class JQL {
 
   get _impl() {
     return this.db._impl;
@@ -481,7 +469,7 @@ export class JQL {
 /**
  * EJDB2 Nodejs wrapper.
  */
-export class EJDB2 {
+class EJDB2 {
 
   /**
    * Open database instance.
