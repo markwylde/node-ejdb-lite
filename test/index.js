@@ -24,9 +24,9 @@
  * SOFTWARE.
  *************************************************************************************************/
 
-const assert = require('assert');
-const test = require('basictap');
-const { EJDB2, JBE } = require('../src/index');
+import assert from 'assert';
+import test from 'basictap';
+import { EJDB2, JBE } from '../src/index.cjs';
 
 test('createQuery', async t => {
   const db = await EJDB2.open('hello.db', { truncate: true });
@@ -302,7 +302,7 @@ test('stress test - parallel', async t => {
     promises.push(
       db.put('cc1', originalDocument)
         .then(id => db.get('cc1', id))
-        .then(returnedDocument => 
+        .then(returnedDocument =>
           assert.deepEqual(returnedDocument, originalDocument)
         )
     );
