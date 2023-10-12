@@ -6,8 +6,8 @@ name: Upload Release Asset
 
 jobs:
   build-mac-arm:
-    name: Build for Mac
-    runs-on: macos-latest
+    name: Build for Mac Arm
+    runs-on: macos-latest-large
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -48,7 +48,7 @@ jobs:
           asset_content_type: application/octet-stream
 
   build-mac-intel:
-    name: Build for Mac
+    name: Build for Mac Intel
     runs-on: macos-latest
     steps:
       - name: Checkout code
