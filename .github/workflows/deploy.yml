@@ -200,7 +200,7 @@ jobs:
   deploy-npmjs:
     name: Deploy on npmjs.org
     runs-on: ubuntu-latest
-    needs: [build-linux, build-linux-aarch64, build-mac]
+    needs: [build-linux, build-linux-aarch64, build-mac-arm, build-mac-intel]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
