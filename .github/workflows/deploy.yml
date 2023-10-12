@@ -6,8 +6,8 @@ name: Upload Release Asset
 
 jobs:
   build-mac-arm:
-    name: Build for Mac
-    runs-on: macos-latest
+    name: Build for Mac Arm
+    runs-on: macos-latest-large
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -17,9 +17,9 @@ jobs:
       - name: Delete npm prefix
         run: npm config delete prefix
 
-      - name: Install dependencies
-        shell: bash --login {0}
-        run: nvm install 16 && nvm use 16
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
 
       - name: Build project
         shell: bash --login {0}
@@ -48,7 +48,7 @@ jobs:
           asset_content_type: application/octet-stream
 
   build-mac-intel:
-    name: Build for Mac
+    name: Build for Mac Intel
     runs-on: macos-latest
     steps:
       - name: Checkout code
