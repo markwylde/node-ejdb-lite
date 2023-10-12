@@ -38,12 +38,12 @@ jobs:
         with:
           submodules: recursive
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
       - name: Delete npm prefix
         run: npm config delete prefix
-
-      - name: Install dependencies
-        shell: bash --login {0}
-        run: nvm install 16 && nvm use 16
 
       - name: Build project
         shell: bash --login {0}

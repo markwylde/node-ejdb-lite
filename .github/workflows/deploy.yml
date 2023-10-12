@@ -17,9 +17,9 @@ jobs:
       - name: Delete npm prefix
         run: npm config delete prefix
 
-      - name: Install dependencies
-        shell: bash --login {0}
-        run: nvm install 16 && nvm use 16
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
 
       - name: Build project
         shell: bash --login {0}
