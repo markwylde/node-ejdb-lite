@@ -7,19 +7,19 @@ name: Upload Release Asset
 jobs:
   build-mac-arm:
     name: Build for Mac Arm
-    runs-on: macos-latest-large
+    runs-on: macos-latest-xlarge
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           submodules: recursive
 
-      - name: Delete npm prefix
-        run: npm config delete prefix
-
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+
+      - name: Delete npm prefix
+        run: npm config delete prefix
 
       - name: Build project
         shell: bash --login {0}

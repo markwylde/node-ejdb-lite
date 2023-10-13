@@ -31,7 +31,7 @@ jobs:
 
   build-arm:
     name: Run Arm Tests
-    runs-on: macos-latest-large
+    runs-on: macos-latest-xlarge
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
