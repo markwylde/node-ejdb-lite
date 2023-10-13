@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-const util = require('util');
-const fs = require('fs');
-const exec = util.promisify(require('node:child_process').exec);
+import util from 'util';
+import fs from 'fs';
+import childProcess from 'node:child_process';
+const exec = util.promisify(childProcess.exec);
 
 async function main () {
   const { stdout, stderr } = await exec(
@@ -25,7 +26,7 @@ async function main () {
     'SOFTMOTIONS_BRANCH=' + latestSoftmotionsHead,
     ...installSourceData.split('\n').slice(1)
   ].join('\n');
-  
+
   await fs.promises.writeFile('./installSource.sh', newInstallSourceData);
 
   const currentSoftmotionsHead = installSourceData.split('\n')[0].split('=')[1];
