@@ -1,5 +1,9 @@
 # EJDB2 Node.js native binding
 
+> Due to the EJDB project having it's bug reporting and issue tracking removed, it's essentially unsupported.
+>
+> Hopefully one day it will open up again then I'd be happy to continue building this library.
+
 Embeddable JSON Database engine http://ejdb.org Node.js binding.
 
 See https://github.com/Softmotions/ejdb/blob/master/README.md
